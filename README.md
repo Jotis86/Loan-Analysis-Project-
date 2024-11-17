@@ -76,10 +76,18 @@
  - Evaluation Metrics: Confusion matrix, ROC curve, precision, recall, F1-score.
 
 ## 🗂️ Project Structure
-- Data
-- NoteBook
-- Predictions
+- **Data**: Contains the datasets used for training and evaluation.
+- **NoteBook**: Jupyter notebooks with code for data analysis and model building.
+- **Predictions**: Results of the model predictions.
+- **Images**: Visualizations and images used in the project.
 
 ## 📬 Contact
 - For any inquiries, you can contact me at jotaduranbon@gmail.com.
+- Connect with me on [LinkedIn](https://www.linkedin.com/in/jotis86).
+
+## 💡 Suggestions and Collaborations
+- If you have any suggestions or would like to collaborate on this project, feel free to reach out. Contributions are always welcome! Please open an issue or submit a pull request with your ideas.
+
+## 👋 Farewell
+Thank you for taking the time to explore this project. I hope you find it insightful and useful. Happy coding!
 
