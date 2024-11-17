@@ -50,7 +50,7 @@
   - Applying the best-performing model to the evaluation set and saving the results.
 
 ## 📈 Results
-- The trained Logistic Regression model achieved an accuracy of X% on the test set. The generated visualizations helped identify the most important features influencing loan status.
+- The trained Logistic Regression model achieved an accuracy of 81.6 % on the test set. The generated visualizations helped identify the most important features influencing loan status.
 
 ## 📝 Conclusions
  - Interest rate and annual income are key factors in predicting loan status.
