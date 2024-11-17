@@ -5,7 +5,7 @@
 ![Commits](https://img.shields.io/github/commit-activity/m/Jotis86/Loan-Analysis-Project-)
 ![Issues Abiertas](https://img.shields.io/github/issues/Jotis86/Loan-Analysis-Project-)
 ![Pull Requests](https://img.shields.io/github/issues-pr/Jotis86/Loan-Analysis-Project-)
-![Forks](https://img.shields.io/github/forks/Jotis86/Loan-Analysis-Project)
+![Forks](https://img.shields.io/github/forks/Jotis86/Loan-Analysis-Project-)
 ![Tamaño del Repositorio](https://img.shields.io/github/repo-size/Jotis86/Loan-Analysis-Project-)
 
 ## 🎯 Objectives
