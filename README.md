@@ -2,6 +2,12 @@
 
 ![Imagen](images/loan_cat.png)
 
+![Commits](https://img.shields.io/github/commit-activity/m/Jotis86/Loan-Analysis-Project)
+![Issues Abiertas](https://img.shields.io/github/issues/Jotis86/Loan-Analysis-Project)
+![Pull Requests](https://img.shields.io/github/issues-pr/Jotis86/Loan-Analysis-Project)
+![Forks](https://img.shields.io/github/forks/Jotis86/Loan-Analysis-Project)
+![Tamaño del Repositorio](https://img.shields.io/github/repo-size/Jotis86/Loan-Analysis-Project)
+
 ## 🎯 Objectives
 - The goal of this project is to analyze a loan dataset to identify key patterns and relationships that can help predict whether a loan is at risk or not. Additionally, we aim to build a machine learning model that can accurately predict the risk of a loan based on various features.
 
