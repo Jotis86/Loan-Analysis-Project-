@@ -7,6 +7,8 @@
 ![Pull Requests](https://img.shields.io/github/issues-pr/Jotis86/Loan-Analysis-Project-)
 ![Forks](https://img.shields.io/github/forks/Jotis86/Loan-Analysis-Project-)
 ![Tamaño del Repositorio](https://img.shields.io/github/repo-size/Jotis86/Loan-Analysis-Project-)
+![Autor](https://img.shields.io/badge/Autor-Juan%20Duran%20Bon-blue)
+![Licencia](https://img.shields.io/github/license/Jotis86/Loan-Analysis-Project-)
 
 ## 🎯 Objectives
 - The goal of this project is to analyze a loan dataset to identify key patterns and relationships that can help predict whether a loan is at risk or not. Additionally, we aim to build a machine learning model that can accurately predict the risk of a loan based on various features.
@@ -90,4 +92,7 @@
 
 ## 👋 Farewell
 Thank you for taking the time to explore this project. I hope you find it insightful and useful. Happy coding!
+
+## 📜 License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
