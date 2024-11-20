@@ -9,8 +9,8 @@ from sklearn.model_selection import train_test_split
 # Load data
 @st.cache_data
 def load_data():
-    train_df = pd.read_csv("C:\\Users\\juane\\OneDrive\\Escritorio\\Datos\\challenge_lending_club_data_train.csv")
-    eval_df = pd.read_csv("C:\\Users\\juane\\OneDrive\\Escritorio\\Datos\\challenge_lending_club_data_evaluation_notarget.csv")
+    train_df = pd.read_csv("Data/challenge_lending_club_data_train.csv")
+    eval_df = pd.read_csv("Data/challenge_lending_club_data_evaluation_notarget.csv")
     return train_df, eval_df
 
 train_df, eval_df = load_data()
