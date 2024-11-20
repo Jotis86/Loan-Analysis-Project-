@@ -83,6 +83,11 @@
 - **Predictions**: Results of the model predictions.
 - **Images**: Visualizations and images used in the project.
 
+## 🌐 Web Application
+I have developed a web application to interactively explore the loan analysis project. The application includes sections for project objectives, methodology and tools, visualizations, and results. You can access the web application using the following link:
+
+[Loan Analysis Web Application](https://5jbfewgry3tpmkytewg2wk.streamlit.app/)
+
 ## 📬 Contact
 - For any inquiries, you can contact me at jotaduranbon@gmail.com.
 - Connect with me on [LinkedIn](https://www.linkedin.com/in/jotis86).
