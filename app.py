@@ -6,7 +6,7 @@ import joblib
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, roc_auc_score, confusion_matrix
 from sklearn.model_selection import train_test_split
 
-# Cargar datos
+# Load data
 @st.cache_data
 def load_data():
     train_df = pd.read_csv("C:\\Users\\juane\\OneDrive\\Escritorio\\Datos\\challenge_lending_club_data_train.csv")
@@ -15,7 +15,7 @@ def load_data():
 
 train_df, eval_df = load_data()
 
-# Seleccionar solo las columnas relevantes
+# Select only relevant columns
 selected_columns = [
     'grade', 'sub_grade', 'short_emp', 'emp_length_num', 'home_ownership', 
     'dti', 'purpose', 'term', 'last_delinq_none', 'last_major_derog_none', 
@@ -23,132 +23,164 @@ selected_columns = [
 ]
 train_df = train_df[selected_columns]
 
-# Manejar valores faltantes
+# Handle missing values
 train_df.fillna(0, inplace=True)
 
-# Separar características y objetivo en el conjunto de entrenamiento
+# Separate features and target in the training set
 X = train_df.drop('bad_loans', axis=1)
 y = train_df['bad_loans']
 
-# Cargar el modelo desde el archivo .pkl
+# Load the model from the .pkl file
 pipeline = joblib.load('Notebook/loan_model.pkl')
 
-# Hacer predicciones en el conjunto de prueba
+# Make predictions on the test set
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 y_pred = pipeline.predict(X_test)
 
-# Evaluar el modelo
+# Evaluate the model
 accuracy = accuracy_score(y_test, y_pred)
 precision = precision_score(y_test, y_pred, average='weighted')
 recall = recall_score(y_test, y_pred, average='weighted')
 f1 = f1_score(y_test, y_pred, average='weighted')
 roc_auc = roc_auc_score(y_test, pipeline.predict_proba(X_test)[:, 1])
 
-# Matriz de confusión
+# Confusion matrix
 conf_matrix = confusion_matrix(y_test, y_pred)
 
-# Imagen principal
+# Main image
 st.image("images/Loan_1.png", use_column_width=True)
 
-# Sidebar para navegación
+# Sidebar for navigation
 st.sidebar.image("images/loan_cat.png", use_column_width=True)
-st.sidebar.title("Navegación")
-menu = st.sidebar.radio("Ir a", ["Objetivos del Proyecto", "Metodología y Herramientas", "Visualizaciones", "Resultados"])
+st.sidebar.title("Navigation")
+menu = st.sidebar.radio("Go to", ["Project Objectives", "Methodology and Tools", "Visualizations", "Results"])
 
-# Objetivos del Proyecto
-if menu == "Objetivos del Proyecto":
+# Project Objectives
+if menu == "Project Objectives":
     st.title("📊 Loan Analysis Project 💸")
-    st.header("🎯 Objetivos del Proyecto")
+    st.header("🎯 Project Objectives")
     st.write("""
-    - 📈 **Analizar** un conjunto de datos de préstamos para identificar patrones y relaciones clave.
-    - 🤖 **Construir** un modelo de machine learning que pueda predecir el riesgo de un préstamo.
-    - 📊 **Generar** visualizaciones para interpretar los resultados.
-    - 🧠 **Proveer** insights valiosos para la toma de decisiones en la gestión de préstamos.
+    The main objective of this project is to analyze a loan dataset to identify key patterns and relationships that can help predict the risk of a loan. The specific objectives include:
+
+    - 📈 **Data Analysis**: Conduct a thorough analysis of the dataset to identify patterns and trends that may influence the risk of a loan.
+    - 🤖 **Machine Learning Model Construction**: Develop and train several machine learning models to predict the risk of a loan. The models will include logistic regression, random forest, and gradient boosting.
+    - 📊 **Generate Visualizations**: Create informative visualizations to help interpret the results of the data analysis and machine learning models.
+    - 🧠 **Provide Insights**: Provide valuable insights that can be used by financial institutions to improve decision-making in loan management.
+    - 🔍 **Identify Key Factors**: Identify the key factors that influence the risk of a loan and how these factors can be mitigated.
+    - 📉 **Risk Reduction**: Propose strategies to reduce the risk of loans based on the results of data analysis and machine learning models.
     """)
 
-# Metodología y Herramientas
-elif menu == "Metodología y Herramientas":
-    st.title("🛠️ Metodología y Herramientas")
-    st.header("📋 Metodología")
+# Methodology and Tools
+elif menu == "Methodology and Tools":
+    st.title("🛠️ Methodology and Tools")
+    st.header("📋 Methodology")
     st.write("""
-    1. **Carga y limpieza de datos**: Cargar los datos y manejar los valores faltantes.
-    2. **Análisis Exploratorio de Datos (EDA)**: Visualizar distribuciones y relaciones entre variables.
-    3. **Preprocesamiento de Datos**: Estandarizar datos numéricos y codificar datos categóricos.
-    4. **Construcción de Modelos**: Entrenar varios modelos de machine learning.
-    5. **Evaluación de Modelos**: Evaluar los modelos utilizando métricas como precisión, recall, F1 score y ROC-AUC.
+    The project development process was carried out in several stages, each of which is crucial for the success of the analysis and model construction:
+
+    1. **Data Loading and Cleaning**:
+        - Load the data from the provided CSV files.
+        - Handle missing values by replacing them with zeros or using appropriate imputation techniques.
+        - Ensure that the data is in the correct format for analysis and modeling.
+
+    2. **Exploratory Data Analysis (EDA)**:
+        - Visualize the distributions of numerical and categorical variables.
+        - Identify relationships and patterns between variables.
+        - Detect and handle outliers that may affect model performance.
+
+    3. **Data Preprocessing**:
+        - Standardize numerical data to ensure that all features are on the same scale.
+        - Encode categorical variables using techniques such as one-hot encoding.
+        - Split the data into training and testing sets to evaluate model performance.
+
+    4. **Model Construction**:
+        - Train several machine learning models, including logistic regression, random forest, and gradient boosting.
+        - Use cross-validation techniques to evaluate model performance and select the best model.
+
+    5. **Model Evaluation**:
+        - Evaluate the models using metrics such as accuracy, recall, F1 score, and ROC-AUC.
+        - Compare the performance of different models and select the best model based on evaluation metrics.
+
+    6. **Generate Visualizations**:
+        - Create informative visualizations to help interpret the results of data analysis and machine learning models.
+        - Use visualization libraries such as Matplotlib and Seaborn to create graphs and charts.
+
+    7. **Propose Strategies**:
+        - Propose strategies to reduce the risk of loans based on the results of data analysis and machine learning models.
+        - Identify the key factors that influence the risk of a loan and how these factors can be mitigated.
     """)
 
-    st.header("🔧 Herramientas Usadas")
+    st.header("🔧 Tools Used")
     st.write("""
-    - 🐍 **Python**: Lenguaje de programación principal.
-    - 🐼 **Pandas**: Para manipulación y análisis de datos.
-    - 📊 **Matplotlib y Seaborn**: Para visualización de datos.
-    - 🤖 **Scikit-learn**: Para preprocesamiento de datos y construcción de modelos de machine learning.
+    - 🐍 **Python**: Main programming language.
+    - 🐼 **Pandas**: For data manipulation and analysis.
+    - 📊 **Matplotlib and Seaborn**: For data visualization.
+    - 🤖 **Scikit-learn**: For data preprocessing and machine learning model construction.
     """)
 
-# Visualizaciones
-elif menu == "Visualizaciones":
-    st.title("📊 Visualizaciones")
-    st.header("Distribución de la Tasa de Interés")
+# Visualizations
+elif menu == "Visualizations":
+    st.title("📊 Visualizations")
+    st.header("Interest Rate Distribution")
     plt.figure(figsize=(10, 6))
     sns.histplot(train_df['revol_util'], kde=True)
     st.pyplot(plt)
 
-    st.header("Estado del Préstamo por Propiedad de Vivienda")
+    st.header("Loan Status by Home Ownership")
     plt.figure(figsize=(10, 6))
     sns.countplot(x='home_ownership', hue='bad_loans', data=train_df)
     st.pyplot(plt)
 
-    st.header("Distribución de la DTI")
+    st.header("DTI Distribution")
     plt.figure(figsize=(10, 6))
     sns.histplot(train_df['dti'], kde=True)
     st.pyplot(plt)
 
-    st.header("Distribución de la Longitud del Empleo")
+    st.header("Employment Length Distribution")
     plt.figure(figsize=(10, 6))
     sns.histplot(train_df['emp_length_num'], kde=True)
     st.pyplot(plt)
 
-    st.header("Distribución de la Propiedad de Vivienda")
+    st.header("Home Ownership Distribution")
     plt.figure(figsize=(10, 6))
     sns.countplot(x='home_ownership', data=train_df)
     st.pyplot(plt)
 
-# Resultados
-elif menu == "Resultados":
-    st.title("📈 Resultados")
-    st.header("📊 Métricas del Mejor Modelo")
+# Results
+elif menu == "Results":
+    st.title("📈 Results")
+    st.header("📊 Best Model Metrics")
     st.write("""
-    Se entrenaron varios modelos de machine learning, incluyendo:
-    - Regresión Logística
-    - Bosque Aleatorio
+    Several machine learning models were trained, including:
+    - Logistic Regression
+    - Random Forest
     - Gradient Boosting
 
-    El mejor modelo fue la **Regresión Logística**. A continuación se presentan las métricas de evaluación del modelo:
+    The best model was **Logistic Regression**. The evaluation metrics for the model are as follows:
     """)
-    st.write(f"**Precisión**: {accuracy:.2f}")
-    st.write(f"**Precisión**: {precision:.2f}")
+    st.write(f"**Accuracy**: {accuracy:.2f}")
+    st.write(f"**Precision**: {precision:.2f}")
     st.write(f"**Recall**: {recall:.2f}")
     st.write(f"**F1 Score**: {f1:.2f}")
     st.write(f"**ROC-AUC Score**: {roc_auc:.2f}")
 
-    st.header("📉 Matriz de Confusión")
+    st.header("📉 Confusion Matrix")
     fig, ax = plt.subplots()
     sns.heatmap(conf_matrix, annot=True, fmt='d', cmap='Blues', ax=ax)
     ax.set_xlabel('Predicted')
     ax.set_ylabel('Actual')
     st.pyplot(fig)
 
-    st.header("🔮 Próximos Pasos")
+    st.header("🔮 Next Steps")
     st.write("""
-    Para mejorar el modelo, se pueden aplicar las siguientes técnicas:
-    - **Ajuste de Hiperparámetros**: Utilizar técnicas como Grid Search o Random Search para encontrar los mejores hiperparámetros.
-    - **Ingeniería de Características**: Crear nuevas características a partir de las existentes para mejorar el rendimiento del modelo.
-    - **Ensamblado de Modelos**: Combinar varios modelos para mejorar la precisión y robustez de las predicciones.
-    - **Validación Cruzada**: Utilizar técnicas de validación cruzada para evaluar el modelo de manera más robusta.
+    To improve the model, the following techniques can be applied:
+    - **Hyperparameter Tuning**: Use techniques such as Grid Search or Random Search to find the best hyperparameters.
+    - **Feature Engineering**: Create new features from existing ones to improve model performance.
+    - **Model Ensembling**: Combine several models to improve the accuracy and robustness of predictions.
+    - **Cross-Validation**: Use cross-validation techniques to evaluate the model more robustly.
     """)
 
-# Botón para ir al repositorio de GitHub
-st.sidebar.title("Repositorio")
-if st.sidebar.button("Ir al repositorio de GitHub"):
-    st.sidebar.markdown("[GitHub](https://github.com/Jotis86/Loan-Analysis-Project-)")
+# Button to go to GitHub repository
+st.sidebar.title("Repository")
+if st.sidebar.button("Go to GitHub Repository"):
+    js = "window.open('https://github.com/Jotis86/Loan-Analysis-Project-')"
+    st.sidebar.markdown(f'<a href="https://github.com/Jotis86/Loan-Analysis-Project-" target="_blank">GitHub</a>', unsafe_allow_html=True)
