@@ -120,29 +120,49 @@ elif menu == "Methodology and Tools":
 # Visualizations
 elif menu == "Visualizations":
     st.title("📊 Visualizations")
+
+    # Set a style for the plots
+    sns.set_style("whitegrid")
+    sns.set_palette("pastel")
+
     st.header("Interest Rate Distribution")
     plt.figure(figsize=(10, 6))
-    sns.histplot(train_df['revol_util'], kde=True)
+    sns.histplot(train_df['revol_util'], kde=True, color='skyblue', edgecolor='black')
+    plt.title('Interest Rate Distribution', fontsize=16)
+    plt.xlabel('Revolving Utilization', fontsize=14)
+    plt.ylabel('Frequency', fontsize=14)
     st.pyplot(plt)
 
     st.header("Loan Status by Home Ownership")
     plt.figure(figsize=(10, 6))
-    sns.countplot(x='home_ownership', hue='bad_loans', data=train_df)
+    sns.countplot(x='home_ownership', hue='bad_loans', data=train_df, palette='pastel', edgecolor='black')
+    plt.title('Loan Status by Home Ownership', fontsize=16)
+    plt.xlabel('Home Ownership', fontsize=14)
+    plt.ylabel('Count', fontsize=14)
     st.pyplot(plt)
 
     st.header("DTI Distribution")
     plt.figure(figsize=(10, 6))
-    sns.histplot(train_df['dti'], kde=True)
+    sns.histplot(train_df['dti'], kde=True, color='lightgreen', edgecolor='black')
+    plt.title('DTI Distribution', fontsize=16)
+    plt.xlabel('Debt-to-Income Ratio', fontsize=14)
+    plt.ylabel('Frequency', fontsize=14)
     st.pyplot(plt)
 
     st.header("Employment Length Distribution")
     plt.figure(figsize=(10, 6))
-    sns.histplot(train_df['emp_length_num'], kde=True)
+    sns.histplot(train_df['emp_length_num'], kde=True, color='salmon', edgecolor='black')
+    plt.title('Employment Length Distribution', fontsize=16)
+    plt.xlabel('Employment Length (years)', fontsize=14)
+    plt.ylabel('Frequency', fontsize=14)
     st.pyplot(plt)
 
     st.header("Home Ownership Distribution")
     plt.figure(figsize=(10, 6))
-    sns.countplot(x='home_ownership', data=train_df)
+    sns.countplot(x='home_ownership', data=train_df, palette='pastel', edgecolor='black')
+    plt.title('Home Ownership Distribution', fontsize=16)
+    plt.xlabel('Home Ownership', fontsize=14)
+    plt.ylabel('Count', fontsize=14)
     st.pyplot(plt)
 
 # Results
