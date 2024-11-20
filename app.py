@@ -4,12 +4,13 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import joblib
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, roc_auc_score, confusion_matrix
+from sklearn.model_selection import train_test_split
 
 # Cargar datos
-@st.cache
+@st.cache_data
 def load_data():
-    train_df = pd.read_csv('data/train_data.csv')
-    eval_df = pd.read_csv('data/eval_data.csv')
+    train_df = pd.read_csv("C:\\Users\\juane\\OneDrive\\Escritorio\\Datos\\challenge_lending_club_data_train.csv")
+    eval_df = pd.read_csv("C:\\Users\\juane\\OneDrive\\Escritorio\\Datos\\challenge_lending_club_data_evaluation_notarget.csv")
     return train_df, eval_df
 
 train_df, eval_df = load_data()
@@ -43,7 +44,7 @@ X = train_df.drop('bad_loans', axis=1)
 y = train_df['bad_loans']
 
 # Cargar el modelo desde el archivo .pkl
-pipeline = joblib.load('loan_model.pkl')
+pipeline = joblib.load('Notebook/loan_model.pkl')
 
 # Hacer predicciones en el conjunto de prueba
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
@@ -61,7 +62,7 @@ conf_matrix = confusion_matrix(y_test, y_pred)
 
 # Sidebar para navegación
 st.sidebar.title("Navegación")
-menu = st.sidebar.radio("Ir a", ["Objetivos del Proyecto", "Visualizaciones", "Modelo de ML"])
+menu = st.sidebar.radio("Ir a", ["Objetivos del Proyecto", "Metodología y Herramientas", "Resultados"])
 
 # Objetivos del Proyecto
 if menu == "Objetivos del Proyecto":
@@ -73,9 +74,29 @@ if menu == "Objetivos del Proyecto":
     - Generar visualizaciones para interpretar los resultados.
     """)
 
-# Visualizaciones
-elif menu == "Visualizaciones":
-    st.title("Visualizaciones")
+# Metodología y Herramientas
+elif menu == "Metodología y Herramientas":
+    st.title("Metodología y Herramientas")
+    st.header("Metodología")
+    st.write("""
+    1. **Carga y limpieza de datos**: Cargar los datos y manejar los valores faltantes.
+    2. **Análisis Exploratorio de Datos (EDA)**: Visualizar distribuciones y relaciones entre variables.
+    3. **Preprocesamiento de Datos**: Estandarizar datos numéricos y codificar datos categóricos.
+    4. **Construcción de Modelos**: Entrenar varios modelos de machine learning.
+    5. **Evaluación de Modelos**: Evaluar los modelos utilizando métricas como precisión, recall, F1 score y ROC-AUC.
+    """)
+
+    st.header("Herramientas Usadas")
+    st.write("""
+    - **Python**: Lenguaje de programación principal.
+    - **Pandas**: Para manipulación y análisis de datos.
+    - **Matplotlib y Seaborn**: Para visualización de datos.
+    - **Scikit-learn**: Para preprocesamiento de datos y construcción de modelos de machine learning.
+    """)
+
+# Resultados
+elif menu == "Resultados":
+    st.title("Resultados")
     st.header("Distribución de la Tasa de Interés")
     plt.figure(figsize=(10, 6))
     sns.histplot(train_df['revol_util'], kde=True)
@@ -86,29 +107,9 @@ elif menu == "Visualizaciones":
     sns.countplot(x='home_ownership', hue='bad_loans', data=train_df)
     st.pyplot(plt)
 
-# Modelo de ML
-elif menu == "Modelo de ML":
-    st.title("Modelo de Machine Learning")
-    st.write("Entrena un modelo de Logistic Regression para predecir el estado del préstamo.")
+# Botón para ir al repositorio de GitHub
+st.sidebar.title("Repositorio")
+if st.sidebar.button("Ir al repositorio de GitHub"):
+    st.sidebar.markdown("[GitHub](https://github.com/Jotis86/Loan-Analysis-Project-)")
 
-    st.write(f"Precisión del Modelo: {accuracy:.2f}")
-    st.write(f"Precisión: {precision:.2f}")
-    st.write(f"Recall: {recall:.2f}")
-    st.write(f"F1 Score: {f1:.2f}")
-    st.write(f"ROC-AUC Score: {roc_auc:.2f}")
 
-    st.write("Matriz de Confusión:")
-    st.write(conf_matrix)
-
-    # Interacción con el modelo
-    st.header("Predicción de Nuevo Préstamo")
-    input_data = {feature: st.number_input(f"Valor de {feature}", value=0) for feature in X.columns}
-    input_df = pd.DataFrame([input_data])
-
-    if st.button("Predecir"):
-        prediction = pipeline.predict(input_df)
-        st.write(f"El estado del préstamo predicho es: {prediction[0]}")
-
-# Ejecutar la aplicación con Streamlit
-if __name__ == "__main__":
-    st.run()
