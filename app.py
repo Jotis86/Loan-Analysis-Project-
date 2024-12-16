@@ -48,10 +48,10 @@ roc_auc = roc_auc_score(y_test, pipeline.predict_proba(X_test)[:, 1])
 conf_matrix = confusion_matrix(y_test, y_pred)
 
 # Main image
-st.image("images/Loan_1.png", use_column_width=True)
+st.image("images/Loan_1.png", use_container_width=True)
 
 # Sidebar for navigation
-st.sidebar.image("images/loan_cat.png", use_column_width=True)
+st.sidebar.image("images/loan_cat.png", use_container_width=True)
 st.sidebar.title("Navigation")
 menu = st.sidebar.radio("Go to", ["Project Objectives", "Methodology and Tools", "Visualizations", "Results"])
 
