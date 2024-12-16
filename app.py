@@ -136,6 +136,7 @@ elif menu == "Visualizations":
     plt.xlabel('Revolving Utilization', fontsize=14)
     plt.ylabel('Frequency', fontsize=14)
     st.pyplot(plt)
+    st.write("This plot shows the distribution of revolving utilization rates among the loans. A higher utilization rate may indicate higher risk.")
 
     st.header("Loan Status by Home Ownership")
     plt.figure(figsize=(10, 6))
@@ -144,6 +145,7 @@ elif menu == "Visualizations":
     plt.xlabel('Home Ownership', fontsize=14)
     plt.ylabel('Count', fontsize=14)
     st.pyplot(plt)
+    st.write("This plot shows the distribution of loan statuses based on home ownership. It helps to understand if home ownership affects loan default rates.")
 
     st.header("DTI Distribution")
     plt.figure(figsize=(10, 6))
@@ -152,6 +154,7 @@ elif menu == "Visualizations":
     plt.xlabel('Debt-to-Income Ratio', fontsize=14)
     plt.ylabel('Frequency', fontsize=14)
     st.pyplot(plt)
+    st.write("This plot shows the distribution of debt-to-income ratios among the loans. A higher DTI ratio may indicate higher risk.")
 
     st.header("Employment Length Distribution")
     plt.figure(figsize=(10, 6))
@@ -160,6 +163,7 @@ elif menu == "Visualizations":
     plt.xlabel('Employment Length (years)', fontsize=14)
     plt.ylabel('Frequency', fontsize=14)
     st.pyplot(plt)
+    st.write("This plot shows the distribution of employment lengths among the borrowers. Longer employment may indicate more stable income.")
 
     st.header("Home Ownership Distribution")
     plt.figure(figsize=(10, 6))
@@ -168,6 +172,43 @@ elif menu == "Visualizations":
     plt.xlabel('Home Ownership', fontsize=14)
     plt.ylabel('Count', fontsize=14)
     st.pyplot(plt)
+    st.write("This plot shows the distribution of home ownership statuses among the borrowers. It helps to understand the common types of home ownership.")
+
+    st.header("Loan Amount Distribution")
+    plt.figure(figsize=(10, 6))
+    sns.histplot(train_df['loan_amnt'], kde=True, color='purple', edgecolor='black')
+    plt.title('Loan Amount Distribution', fontsize=16)
+    plt.xlabel('Loan Amount', fontsize=14)
+    plt.ylabel('Frequency', fontsize=14)
+    st.pyplot(plt)
+    st.write("This plot shows the distribution of loan amounts. It helps to understand the common loan sizes and their frequencies.")
+
+    st.header("Interest Rate vs. Loan Amount")
+    plt.figure(figsize=(10, 6))
+    sns.scatterplot(x='loan_amnt', y='int_rate', data=train_df, color='blue', edgecolor='black')
+    plt.title('Interest Rate vs. Loan Amount', fontsize=16)
+    plt.xlabel('Loan Amount', fontsize=14)
+    plt.ylabel('Interest Rate', fontsize=14)
+    st.pyplot(plt)
+    st.write("This scatter plot shows the relationship between loan amounts and interest rates. It helps to understand if larger loans have higher interest rates.")
+
+    st.header("Grade Distribution")
+    plt.figure(figsize=(10, 6))
+    sns.countplot(x='grade', data=train_df, palette='pastel', edgecolor='black')
+    plt.title('Grade Distribution', fontsize=16)
+    plt.xlabel('Grade', fontsize=14)
+    plt.ylabel('Count', fontsize=14)
+    st.pyplot(plt)
+    st.write("This plot shows the distribution of loan grades. It helps to understand the common grades assigned to loans.")
+
+    st.header("Purpose of Loan Distribution")
+    plt.figure(figsize=(10, 6))
+    sns.countplot(y='purpose', data=train_df, palette='pastel', edgecolor='black')
+    plt.title('Purpose of Loan Distribution', fontsize=16)
+    plt.xlabel('Count', fontsize=14)
+    plt.ylabel('Purpose', fontsize=14)
+    st.pyplot(plt)
+    st.write("This plot shows the distribution of loan purposes. It helps to understand the common reasons for taking out loans.")
 
 # Results
 elif menu == "Results":
