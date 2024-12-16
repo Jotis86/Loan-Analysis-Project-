@@ -198,15 +198,33 @@ elif menu == "Results":
     sns.heatmap(conf_matrix, annot=True, fmt='d', cmap='Blues', ax=ax)
     ax.set_xlabel('Predicted')
     ax.set_ylabel('Actual')
+    plt.title('Confusion Matrix', fontsize=16)
     st.pyplot(fig)
+    st.write("The confusion matrix provides a summary of the prediction results on the test set. It shows the number of true positives, true negatives, false positives, and false negatives.")
+
+    st.header("📈 ROC Curve")
+    fig, ax = plt.subplots()
+    fpr, tpr, _ = roc_curve(y_test, pipeline.predict_proba(X_test)[:, 1])
+    ax.plot(fpr, tpr, color='blue', lw=2)
+    ax.plot([0, 1], [0, 1], color='gray', lw=2, linestyle='--')
+    ax.set_xlim([0.0, 1.0])
+    ax.set_ylim([0.0, 1.05])
+    ax.set_xlabel('False Positive Rate', fontsize=14)
+    ax.set_ylabel('True Positive Rate', fontsize=14)
+    plt.title('Receiver Operating Characteristic (ROC) Curve', fontsize=16)
+    st.pyplot(fig)
+    st.write("The ROC curve illustrates the diagnostic ability of the logistic regression model. The area under the curve (AUC) is a measure of the model's ability to distinguish between classes.")
 
     st.header("🔮 Next Steps")
     st.write("""
     To improve the model, the following techniques can be applied:
-    - **Hyperparameter Tuning**: Use techniques such as Grid Search or Random Search to find the best hyperparameters.
-    - **Feature Engineering**: Create new features from existing ones to improve model performance.
-    - **Model Ensembling**: Combine several models to improve the accuracy and robustness of predictions.
-    - **Cross-Validation**: Use cross-validation techniques to evaluate the model more robustly.
+    - **Hyperparameter Tuning**: Use techniques such as Grid Search or Random Search to find the best hyperparameters. This can help in optimizing the model's performance.
+    - **Feature Engineering**: Create new features from existing ones to improve model performance. This may involve combining features, creating interaction terms, or using domain knowledge to create meaningful features.
+    - **Model Ensembling**: Combine several models to improve the accuracy and robustness of predictions. Techniques such as bagging, boosting, and stacking can be used to create ensemble models.
+    - **Cross-Validation**: Use cross-validation techniques to evaluate the model more robustly. This helps in assessing the model's performance on different subsets of the data and reduces the risk of overfitting.
+    - **Data Augmentation**: Increase the size of the training data by generating synthetic samples. This can help in improving the model's generalization ability.
+    - **Regularization**: Apply regularization techniques to prevent overfitting. Techniques such as L1 and L2 regularization can be used to penalize large coefficients and improve model generalization.
+    - **Model Interpretability**: Use techniques such as SHAP (SHapley Additive exPlanations) and LIME (Local Interpretable Model-agnostic Explanations) to interpret the model's predictions and understand the impact of different features.
     """)
 
 # Button to go to GitHub repository
