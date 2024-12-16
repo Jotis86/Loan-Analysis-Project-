@@ -174,43 +174,6 @@ elif menu == "Visualizations":
     st.pyplot(plt)
     st.write("This plot shows the distribution of home ownership statuses among the borrowers. It helps to understand the common types of home ownership.")
 
-    # Additional Visualizations
-    st.header("Loan Amount Distribution")
-    plt.figure(figsize=(10, 6))
-    sns.histplot(train_df['loan_amnt'], kde=True, color='purple', edgecolor='black')
-    plt.title('Loan Amount Distribution', fontsize=16)
-    plt.xlabel('Loan Amount', fontsize=14)
-    plt.ylabel('Frequency', fontsize=14)
-    st.pyplot(plt)
-    st.write("This plot shows the distribution of loan amounts among the borrowers. It helps to understand the typical loan sizes.")
-
-    st.header("Annual Income Distribution")
-    plt.figure(figsize=(10, 6))
-    sns.histplot(train_df['annual_inc'], kde=True, color='orange', edgecolor='black')
-    plt.title('Annual Income Distribution', fontsize=16)
-    plt.xlabel('Annual Income', fontsize=14)
-    plt.ylabel('Frequency', fontsize=14)
-    st.pyplot(plt)
-    st.write("This plot shows the distribution of annual incomes among the borrowers. Higher incomes may indicate lower risk.")
-
-    st.header("Interest Rate by Grade")
-    plt.figure(figsize=(10, 6))
-    sns.boxplot(x='grade', y='int_rate', data=train_df, palette='pastel', edgecolor='black')
-    plt.title('Interest Rate by Grade', fontsize=16)
-    plt.xlabel('Grade', fontsize=14)
-    plt.ylabel('Interest Rate', fontsize=14)
-    st.pyplot(plt)
-    st.write("This plot shows the distribution of interest rates by loan grade. Higher grades typically have lower interest rates.")
-
-    st.header("Loan Status by Purpose")
-    plt.figure(figsize=(10, 6))
-    sns.countplot(x='purpose', hue='bad_loans', data=train_df, palette='pastel', edgecolor='black')
-    plt.title('Loan Status by Purpose', fontsize=16)
-    plt.xlabel('Purpose', fontsize=14)
-    plt.ylabel('Count', fontsize=14)
-    plt.xticks(rotation=45)
-    st.pyplot(plt)
-    st.write("This plot shows the distribution of loan statuses based on the purpose of the loan. It helps to understand if the purpose affects loan default rates.")
 
 # Results
 elif menu == "Results":
