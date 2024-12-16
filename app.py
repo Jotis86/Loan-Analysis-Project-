@@ -62,12 +62,16 @@ if menu == "Project Objectives":
     st.write("""
     The main objective of this project is to analyze a loan dataset to identify key patterns and relationships that can help predict the risk of a loan. The specific objectives include:
 
-    - 📈 **Data Analysis**: Conduct a thorough analysis of the dataset to identify patterns and trends that may influence the risk of a loan.
-    - 🤖 **Machine Learning Model Construction**: Develop and train several machine learning models to predict the risk of a loan. The models will include logistic regression, random forest, and gradient boosting.
-    - 📊 **Generate Visualizations**: Create informative visualizations to help interpret the results of the data analysis and machine learning models.
-    - 🧠 **Provide Insights**: Provide valuable insights that can be used by financial institutions to improve decision-making in loan management.
-    - 🔍 **Identify Key Factors**: Identify the key factors that influence the risk of a loan and how these factors can be mitigated.
-    - 📉 **Risk Reduction**: Propose strategies to reduce the risk of loans based on the results of data analysis and machine learning models.
+    - 📈 **Data Analysis**: Conduct a thorough analysis of the dataset to identify patterns and trends that may influence the risk of a loan. This includes exploring the distribution of key variables, identifying correlations, and detecting outliers.
+    - 🤖 **Machine Learning Model Construction**: Develop and train several machine learning models to predict the risk of a loan. The models will include logistic regression, random forest, and gradient boosting. Each model will be evaluated to determine the best performing one.
+    - 📊 **Generate Visualizations**: Create informative visualizations to help interpret the results of the data analysis and machine learning models. These visualizations will include histograms, bar plots, and scatter plots to provide insights into the data.
+    - 🧠 **Provide Insights**: Provide valuable insights that can be used by financial institutions to improve decision-making in loan management. This includes identifying the most important factors that influence loan risk and suggesting ways to mitigate these risks.
+    - 🔍 **Identify Key Factors**: Identify the key factors that influence the risk of a loan and how these factors can be mitigated. This involves analyzing the impact of variables such as interest rates, employment length, and debt-to-income ratio on loan status.
+    - 📉 **Risk Reduction**: Propose strategies to reduce the risk of loans based on the results of data analysis and machine learning models. These strategies may include adjusting lending criteria, improving borrower assessment processes, and implementing risk-based pricing.
+    - 📚 **Documentation and Reporting**: Document the entire process, including data analysis, model development, and findings. Create comprehensive reports that summarize the methodology, results, and recommendations.
+    - 🌐 **Web Application Development**: Develop a web application to allow users to interactively explore the loan analysis project. The application will include sections for project objectives, methodology and tools, visualizations, and results.
+    - 🛠️ **Tool Integration**: Integrate various tools and libraries such as Pandas for data manipulation, Seaborn and Matplotlib for visualization, and Scikit-learn for machine learning. Ensure that the tools are used effectively to achieve the project objectives.
+    - 🔄 **Continuous Improvement**: Continuously improve the models and analysis based on feedback and new data. Implement a process for regularly updating the models and incorporating new insights.
     """)
 
 # Methodology and Tools
